@@ -20,8 +20,8 @@ struct Words {
 // Function Definitions.
 Words *readInputFile(string fileName, int &noWords);
 int binarySearch(Words *wordsList, int noWords);
-void insertionSort(Words *wordsList[], int noWords);
-void displayArray(Words *wordsList[], int noWords);
+void insertionSort(Words *wordsList, int noWords);
+void displayArray(Words *wordsList, int noWords);
 
 int main() {
     
@@ -48,11 +48,14 @@ int main() {
     wordsList = readInputFile(fileName, noWords);
     
     // Sorting the list using insertion sort.
-    insertionSort(wordsList, noWords);
+    // insertionSort(wordsList, noWords);
     
     // Searching the dynamically allocated list by calling the binarySearch function.
-    int position;
-    position = binarySearch(wordsList, noWords);
+    // int position;
+    // position = binarySearch(wordsList, noWords);
+    
+    // Displaying the array if its less than 25 lines.
+    displayArray(wordsList, noWords);
     
     return 0;
 }
@@ -105,3 +108,46 @@ Words *readInputFile(string fileName, int &noWords) {
     return wordsList;
 }
 
+int binarySearch(Words *wordsList, int noWords) {
+    return 0;
+}
+
+void insertionSort(Words *wordsList[], int noWords) {
+    
+}
+
+/*
+`This function displayArray() does the following: 
+    - Takes in the dynamically allocated array of wordsList 
+    - Prints out the title format
+    - Prints out the sorted alphabetical array of the synonym and proceeding antonyms
+    - Prints out the final format
+*/
+
+void displayArray(Words *wordsList, int noWords) {
+    
+    // Display starting title.
+    cout << setw(0)  << "==========   ";
+    cout << setw(0)  << "==========   ";
+    cout << endl; 
+    
+    cout << setw(10)  << "word"; 
+    cout << setw(10) << "antonym";
+    cout << endl; 
+    
+    cout << setw(0)  << "==========   ";
+    cout << setw(0)  << "==========   ";
+    cout << endl;
+    
+    // Display each word.
+    for (int i = 0; i < noWords; i++) {
+        cout << right << setw(10) << wordsList[i].word; 
+        cout << "   " << wordsList[i].antonym;
+        cout << endl;
+    }
+
+    // Display final.
+    cout << setw(0)  << "==========   ";
+    cout << setw(0)  << "==========   ";
+    cout << endl; 
+}
