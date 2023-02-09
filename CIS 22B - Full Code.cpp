@@ -55,7 +55,7 @@ int main() {
     position = binarySearch(wordsList, inputWord, noWords);
     
     // Printing result of the search.
-    if (position != -1) {
+    if (position == -1) {
         cout << "\"" << inputWord << "\"" << " is unable to be found." << endl; 
     }
     else {
@@ -156,8 +156,7 @@ int binarySearch(Words *wordsList, string target, int noWords) {
     - Updates the struct list afterwards
 */ 
 
-void insertionSort(Words *wordsList, int noWords)
-{
+void insertionSort(Words *wordsList, int noWords) {
     
     for (int curr = 1; curr < noWords; curr++) {
         // Make a copy of the current element
