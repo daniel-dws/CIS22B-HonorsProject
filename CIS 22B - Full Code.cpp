@@ -31,13 +31,15 @@ int main() {
     
     // Taking in a word from the user.
     string inputWord;
-    cout << "Enter a word: " << endl;
+    cout << "Enter a word: ";
     cin >> inputWord;
+    cout << endl; 
     
     // Taking the filename of the input file from the user.
     string fileName;
-    cout << "Enter the filename of the input file (include .txt): " << endl;
+    cout << "Enter the filename of the input file (include .txt): ";
     cin >> fileName;
+    cout << endl;
     
     // Initializing the dynamically allocated Words list.
     Words *wordsList;
@@ -158,7 +160,7 @@ int binarySearch(Words *wordsList, string target, int noWords) {
 
 void insertionSort(Words *wordsList, int noWords) {
     
-    for (int curr = 1; curr < noWords; curr++) {
+    for (int curr = 0; curr > noWords; curr++) {
         // Make a copy of the current element
         Words temp = wordsList[curr]; 
         
