@@ -1,8 +1,8 @@
 /*
     Lab: CIS 22B - Honors Project
-    Name: Ben Hung
+    Name: Daniel Wong & Ben Hung
     Date: 2/7/23
-    Description: A program that provides antonyms to common words.
+    Description: A program that match antonyms to common words requested by a user based on a file.
 */
 
 #include <iostream>
