@@ -23,6 +23,11 @@ int binarySearch(Words *wordsList, string target, int noWords);
 void insertionSort(Words *wordsList, int noWords);
 void displayArray(Words *wordsList, int noWords);
 
+/*
+ Function written by Ben Hung
+ Debugged by Daniel Wong
+*/
+
 int main() {
     
     // Printing introduction.
@@ -82,6 +87,9 @@ int main() {
     - Dynamically allocates an array of Words structures.
     - Closes the input file.
     - Returns the pointer that points to the dynamically allocated list of Words structures.
+    
+    Function written by: Ben Hung
+    Debugged by Daniel Wong
 */
 
 Words *readInputFile(string fileName, int &noWords) {
@@ -125,6 +133,8 @@ Words *readInputFile(string fileName, int &noWords) {
     - Takes in a dynamically allocated array, the target, and the size of the array.
     - Uses the binary search algorithm to efficiently find a string.
     - Returns the position/index of the string if found, if not returns -1.
+    
+    Function written by: Ben Hung
 */
 int binarySearch(Words *wordsList, string target, int noWords) {
     
@@ -156,6 +166,9 @@ int binarySearch(Words *wordsList, string target, int noWords) {
     - Takes in the dynamically allocated array of wordsList 
     - Rearranges word from struct Words in an alphabetical format
     - Updates the struct list afterwards
+    
+    Function written by: Daniel Wong
+    Debugged by Ben Hung
 */ 
 
 void insertionSort(Words *wordsList, int noWords) 
@@ -183,6 +196,8 @@ void insertionSort(Words *wordsList, int noWords)
     - Prints out the title format
     - Prints out the sorted alphabetical array of the synonym and proceeding antonyms
     - Prints out the final format
+    
+    Function written by: Daniel Wong
 */
 
 void displayArray(Words *wordsList, int noWords) {
