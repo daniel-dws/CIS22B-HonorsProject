@@ -22,7 +22,6 @@ int main()
 {
 
     Words list[100];
-    boo
 
     return 0;
 }
