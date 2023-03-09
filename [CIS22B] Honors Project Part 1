@@ -1,0 +1,25 @@
+/*
+    Lab: CIS 22B - Honors Project Part 1
+    Name: Daniel Wong & Ben Hung
+    Date: 2/7/23
+    Description: A program that match antonyms to common words requested by a user based on a file.
+*/
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
+
+// Words Structure.
+struct Words {
+    string word;
+    string antonym;
+};
+
+int main()
+{
+    
+    return 0;
+}
