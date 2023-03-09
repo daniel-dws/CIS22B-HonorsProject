@@ -20,5 +20,8 @@ struct Words {
 
 int main()
 {
+
+    Words list[100];
+
     return 0;
 }
