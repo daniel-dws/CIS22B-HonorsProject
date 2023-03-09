@@ -12,14 +12,13 @@
 using namespace std;
 
 
-// Words Structure.
+// Words Structure
 struct Words {
-    string word;
-    string antonym;
+    string *w;
+    string *a;
 };
 
 int main()
 {
-    hi this ia  goa
     return 0;
 }
