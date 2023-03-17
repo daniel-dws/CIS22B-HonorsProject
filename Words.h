@@ -5,20 +5,32 @@
 using std::ostream;
 using std::string;
 
-class Words {
-   private:
-      string *w;
-      string *a;
+/*
+    Words.h file to declare 
+    
+    Written by: Ben Hung
+    Debugged by: Daniel Wongs
+*/
 
-   public:
-   
-      Words();
-      Words(string *w, string *a);
-      
-      void setW(string *w) { this->w = w; }
-      void setA(string *a) {this->a = a; }
-      string* getW() { return w; }
-      string* getA() { return a; }
+class Words {
+    private:
+    
+        // Private variables.
+        string *w;
+        string *a;
+
+    public:
+    
+        // Default and overloaded constructor.
+        Words();
+        Words(string *w, string *a);
+        
+        // Setters and getters.
+        void setW(string *w) { this->w = w; }
+        void setA(string *a) {this->a = a; }
+        string* getW() { return w; }
+        string* getA() { return a; }
+
 };
 
 #endif
