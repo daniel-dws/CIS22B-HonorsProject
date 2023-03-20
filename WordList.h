@@ -1,6 +1,7 @@
 #ifndef WORDLIST_H
 #define WORDLIST_H
 #include <string>
+#include "Words.h"
 
 using std::ostream;
 using std::string;
