@@ -36,46 +36,66 @@ int main() {
     cout << "Welcome! This program will take in a word and try to find its antonym." << endl;
     cout << endl;
     
-    // Taking in a word from the user.
-    string inputWord;
-    cout << "Enter a word: ";
-    cin >> inputWord;
-    cout << endl; 
+    string repeat = "no";
+    int count = 0;
+    while (repeat == "yes" || count == 0) {
+        
     
-    // Taking the filename of the input file from the user.
-    string fileName;
-    cout << "Enter the filename of the input file (include .txt): ";
-    cin >> fileName;
-    cout << endl;
-    
-    // Initializing dynamically allocated lists and the line count of the input file.
-    Words *wordsList;
-    int noWords = 0;
-    string *stringList;
-    
-    // Calling readInputFile to read the file to "wordsList".
-    wordsList = readInputFile(fileName, noWords, wordsList, stringList);
-    
-    // Sorting the list using insertion sort.
-    insertionSort(wordsList, noWords);
-    
-    // Searching the dynamically allocated list by calling the binarySearch function.
-    int position;
-    position = binarySearch(wordsList, inputWord, noWords);
-    
-    // Printing result of the search.
-    if (position == -1) {
-        cout << "\"" << inputWord << "\"" << " is unable to be found." << endl;
+        // Taking in a word from the user.
+        string inputWord;
+        cout << "Enter a word: ";
+        cin >> inputWord;
+        cout << endl; 
+        
+        // Changing the word to all lowercase characters.
+        for (int i = 0; i < inputWord.length(); i++) {
+            inputWord[i] = tolower(inputWord[i]);
+        }
+        
+        // Taking the filename of the input file from the user.
+        string fileName;
+        cout << "Enter the filename of the input file (include .txt): ";
+        cin >> fileName;
+        cout << endl;
+        
+        // Initializing dynamically allocated lists and the line count of the input file.
+        Words *wordsList;
+        int noWords = 0;
+        string *stringList;
+        
+        // Calling readInputFile to read the file to "wordsList".
+        wordsList = readInputFile(fileName, noWords, wordsList, stringList);
+        
+        // Sorting the list using insertion sort.
+        insertionSort(wordsList, noWords);
+        
+        // Searching the dynamically allocated list by calling the binarySearch function.
+        int position;
+        position = binarySearch(wordsList, inputWord, noWords);
+        
+        // Printing result of the search.
+        if (position == -1) {
+            cout << "\"" << inputWord << "\"" << " is unable to be found." << endl;
+        }
+        else {
+            cout << "\"" << inputWord << "\"" << " has been found! Its antonym is " << *wordsList[position].getA() << "." << endl;
+        }
+        
+        // Displaying the array if its less than 25 lines.
+        if (noWords < 25) {
+            displayArray(wordsList, noWords, stringList);
+        }
+        
+        // Asking user if they would like to repeat the program.
+        count++;
+        cout << "\nWould you like to repeat?" << endl;
+        cin >> repeat;
+        
+        // Changing the input to all lowercase characters.
+        for (int i = 0; i < repeat.length(); i++) {
+            repeat[i] = tolower(repeat[i]);
+        }
     }
-    else {
-        cout << "\"" << inputWord << "\"" << " has been found! Its antonym is " << *wordsList[position].getA() << "." << endl;
-    }
-    
-    // Displaying the array if its less than 25 lines.
-    if (noWords < 25) {
-        displayArray(wordsList, noWords, stringList);
-    }
-    
     
     return 0;
 }
