@@ -1,45 +1,28 @@
 #ifndef WORDLIST_H
 #define WORDLIST_H
-#include <string>
-#include "Words.h"
 
-using std::ostream;
-using std::string;
+#include "Words.h"
+#include <string>
+using namespace std;
 
 /*
     Wordlist.h file to declare 
-
     Written by: Ben Hung
     Debugged by: Daniel Wong
 */
 
+//Constructor
 class WordList {
     private:
+        Words *wordsList;
+        string *stringList;
+        
+        int maxLength;
+        int currIdx;
 
-        // Private variables.
-        ListNodehead;
-        int count;
-
-        // Declare a structure.
-        struct Word
-        {
-            Words wordObj; // The value in this node
-            ListNode *next;  // To point to the next node
-        };
-
-
-    public:
-
-        // Destructor and Constructor
-        WordList();
-        ~WordList();
-
-        // Linked list functions.
-        int getCount() const {return count;}
-        void insertNode(wordObj);
-        void display() const;
-        void searchList() const;
-};
-
+    public: 
+        WordList(int noWords);
+        WordList(Words *wordsList, string *stringList, int noWords);
+}
 
 #endif
