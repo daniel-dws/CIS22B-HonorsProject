@@ -24,6 +24,10 @@ void displayArray(Words *wordsList, int noWords, string *stringList);
 int binarySearch(Words *wordsList, string target, int noWords);
 
 /*
+ This function (main) does the following:
+    Welcomes user and prompts for the word
+    Lower cases all words
+    Asks user to repeat program 
     Function written by: Ben Hung
     Debugged by: Daniel Wong
 */
