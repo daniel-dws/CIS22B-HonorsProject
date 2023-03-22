@@ -14,7 +14,7 @@
 using namespace std;
 
 // Function Definitions.
-Words *readInputFile(string fileName, int &noWords, WordList *wordsList, string *&stringList);
+WordList *readInputFile(string fileName, int &noWords);
 /*
     Function written by: Ben Hung
     Debugged by: Daniel Wong
@@ -47,33 +47,37 @@ int main() {
         cin >> fileName;
         cout << endl;
         
-        // Initializing dynamically allocated lists and the line count of the input file.
-        Words *wordsList;
         int noWords = 0;
-        string *stringList;
         
         // Calling readInputFile to read the file to "wordsList".
-        wordsList = readInputFile(fileName, noWords, wordsList, stringList);
+        WordList *wordsList = readInputFile(fileName, noWords);
         
         // Sorting the list using insertion sort.
-        insertionSort(wordsList, noWords);
+        wordsList->insertionSort();
         
         // Searching the dynamically allocated list by calling the binarySearch function.
         int position;
-        position = binarySearch(wordsList, inputWord, noWords);
+        position = wordsList->binarySearch(inputWord);
+        
+        cout << "Binary Sort works" << endl;
         
         // Printing result of the search.
         if (position == -1) {
             cout << "\"" << inputWord << "\"" << " is unable to be found." << endl;
         }
         else {
-            cout << "\"" << inputWord << "\"" << " has been found! Its antonym is " << *wordsList[position].getA() << "." << endl;
+            cout << "\"" << inputWord << "\"" << " has been found! Its antonym is ";
+            wordsList->getAntonym(position);
+            cout << "." << endl;
         }
+        
         
         // Displaying the array if its less than 25 lines.
         if (noWords < 25) {
-            displayArray(wordsList, noWords, stringList);
+            //displayArray(wordsList, noWords, stringList);
+            wordsList->displayArray();
         }
+        
         
         // Asking user if they would like to repeat the program.
         count++;
@@ -105,7 +109,8 @@ int main() {
     Function written by: Daniel Wong
     Debugged by: Ben Hung
 */
-Words *readInputFile(string fileName, int &noWords, Words *wordsList, string *&stringList) {
+/*
+WordList *readInputFile(string fileName, int &noWords, WordList *wordsList, string *&stringList) {
     
     // Creating the object needed to read the file.
     ifstream inputFile;
@@ -124,18 +129,20 @@ Words *readInputFile(string fileName, int &noWords, Words *wordsList, string *&s
     inputFile.ignore();
     
     // Initializing pointer to a dynamically allocated list of Words structures.
-    wordsList = new Words[noWords*2];
+    Words *wList = new Words[noWords*2];
     stringList = new string[noWords*2];
 
     for (int i = 0; i < 2*noWords; i+=2) {
         inputFile >> stringList[i];
         inputFile >> stringList[i+1];
         
-        wordsList.insertNode(Words(&stringList[i], &stringList[i+1]));
-        wordsList.insertNode(Words(&stringList[i+1], &stringList[i]));
+        wList[i] = Words(&stringList[i], &stringList[i+1]);
+        wList[i+1] = Words(&stringList[i+1], &stringList[i]);
         
         inputFile.ignore();
     }
+    
+    wordsList = new WordList(wList, stringList, noWords);
     
     // Closing the input file.
     inputFile.close();
@@ -143,4 +150,42 @@ Words *readInputFile(string fileName, int &noWords, Words *wordsList, string *&s
     // Returning the pointer to the dynamically allocated array.
     return wordsList;
 }
+*/
 
+WordList *readInputFile(string fileName, int &noWords) {
+    
+    // Creating the object needed to read the file.
+    ifstream inputFile;
+    
+    // Opening the file.
+    inputFile.open(fileName.c_str());
+    
+    // Checking for errors.
+    if (inputFile.fail()) {
+        cout << "Error opening " << fileName << " for reading." << endl;
+        exit(EXIT_FAILURE);
+    }
+    
+    // Getting the number of lines in the file by reading the first line.
+    inputFile >> noWords;
+    inputFile.ignore();
+    
+    WordList *obj = new WordList(noWords);
+    
+    string word;
+    string antonym;
+
+    for (int i = 0; i < 2*noWords; i+=2) {
+        inputFile >> word;
+        inputFile >> antonym;
+        
+        obj->insertPair(word, antonym);
+        
+        inputFile.ignore();
+    }
+    
+    // Closing the input file.
+    inputFile.close();
+    
+    return obj;
+}

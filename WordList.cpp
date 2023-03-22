@@ -14,6 +14,7 @@ using namespace std;
 //Constructor
 WordList::WordList(int noWords)
 {
+    cout << noWords << endl;
     wordsList = new Words[noWords*2];
     stringList = new string[noWords*2];
     currIdx = 0; // no actual Word classes have been inserted into wordsList
@@ -22,19 +23,10 @@ WordList::WordList(int noWords)
 
 WordList::WordList(Words *wordsList, string *stringList, int noWords)
 {
-    wordsList = &wordsList;
-    stringList = &stringList;
+    wordsList = wordsList;
+    stringList = stringList;
     currIdx = 0; 
     maxLength = noWords * 2;
-}
-
-WordList::~WordList() {
-    for (int i = 0; i < maxLength; i++) {
-        delete wordsList[i];
-    }
-
-    delete [] wordsList;
-    delete [] stringList;
 }
 
 void WordList::insertPair(string word, string antonym)
@@ -57,13 +49,22 @@ void WordList::insertPair(string word, string antonym)
 
 void WordList::insertionSort()
 {
+    //cout << "This part runs" << endl;
+    
     // same logic, call before search
     for (int curr = 1; curr < maxLength; curr++) {
+        
+        //cout << "HI" << endl;
+        //cout << maxLength << endl;
+        
+        //cout << "Here" << endl;
         // Make a copy of the current element
         Words temp = wordsList[curr]; 
+        //cout << "Here" << endl;
 
         // Shift elements in the sorted part of the list to make room 
         int walk = curr - 1;
+        //cout << walk << endl;
         while(walk >= 0 && *temp.getW() < *wordsList[walk].getW()) {
             wordsList[walk + 1] = wordsList[walk];
             walk--;
@@ -72,6 +73,8 @@ void WordList::insertionSort()
         // Put temp back into the list
         wordsList[walk + 1] = temp;
     }
+    
+    //cout << "this part also runs" << endl;
 }
 
 int WordList::binarySearch(string target) {
@@ -96,3 +99,53 @@ int WordList::binarySearch(string target) {
     }
     return position;
 }
+
+void WordList::getAntonym(int position) {
+    cout << *wordsList[position].getA();
+}
+
+void WordList::displayArray() {
+    
+    cout << setw(0)  << "==========   ";
+    cout << setw(0)  << "==========   ";
+    cout << endl; 
+
+    cout << setw(10)  << "word"; 
+    cout << setw(10) << "antonym";
+    cout << endl; 
+
+    cout << setw(0)  << "==========   ";
+    cout << setw(0)  << "==========   ";
+    cout << endl;
+
+    // Display each word.
+    for (int i = 0; i < maxLength; i++) {
+        bool proceed = false;
+
+        // Only printing the word if it is part of the words half (not antonyms).
+        for (int j = 0; j < maxLength; j+=2) {
+            if (stringList[j].compare(*wordsList[i].getW()) == 0) {
+                proceed = true;
+            }
+        }
+
+        if (proceed == true) {
+            cout << right << setw(10) << *wordsList[i].getW();
+            cout << "   " << *wordsList[i].getA();
+            cout << endl;
+        }
+    }
+
+    // Display final.
+    cout << setw(0)  << "==========   ";
+    cout << setw(0)  << "==========   ";
+    cout << endl;
+}
+
+//Destructor
+WordList::~WordList() 
+{
+    delete [] wordsList;
+    delete [] stringList;
+}
+

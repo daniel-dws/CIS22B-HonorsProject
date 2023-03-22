@@ -23,6 +23,13 @@ class WordList {
     public: 
         WordList(int noWords);
         WordList(Words *wordsList, string *stringList, int noWords);
-}
+        void insertPair(string word, string antonym);
+        void getAntonym(int position);
+        void insertionSort();
+        void displayArray();
+        int binarySearch(string target);
+        ~WordList();
+        
+};
 
 #endif
