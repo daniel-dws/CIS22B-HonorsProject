@@ -64,18 +64,12 @@ void WordList::insertPair(string word, string antonym)
 //insertionSort()
 void WordList::insertionSort()
 {
-    //cout << "This part runs" << endl;
     
     // same logic, call before search
     for (int curr = 1; curr < maxLength; curr++) {
-        
-        //cout << "HI" << endl;
-        //cout << maxLength << endl;
-        
-        //cout << "Here" << endl;
+    
         // Make a copy of the current element
         Words temp = wordsList[curr]; 
-        //cout << "Here" << endl;
 
         // Shift elements in the sorted part of the list to make room 
         int walk = curr - 1;
@@ -89,7 +83,6 @@ void WordList::insertionSort()
         wordsList[walk + 1] = temp;
     }
     
-    //cout << "this part also runs" << endl;
 }
 
 //binarySearch() 
