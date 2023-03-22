@@ -21,6 +21,7 @@ WordList::WordList(int noWords)
     maxLength = noWords * 2;
 }
 
+//Overloaded Constructor
 WordList::WordList(Words *wordsList, string *stringList, int noWords)
 {
     wordsList = wordsList;
@@ -29,6 +30,19 @@ WordList::WordList(Words *wordsList, string *stringList, int noWords)
     maxLength = noWords * 2;
 }
 
+//Destructor
+WordList::~WordList() 
+{
+    delete [] wordsList;
+    delete [] stringList;
+}
+
+//Getters 
+void WordList::getAntonym(int position) {
+    cout << *wordsList[position].getA();
+}
+
+//insertPair back into display 
 void WordList::insertPair(string word, string antonym)
 {
     if (currIdx + 2 <= maxLength) {
@@ -47,6 +61,7 @@ void WordList::insertPair(string word, string antonym)
     }
 }
 
+//insertionSort()
 void WordList::insertionSort()
 {
     //cout << "This part runs" << endl;
@@ -77,6 +92,7 @@ void WordList::insertionSort()
     //cout << "this part also runs" << endl;
 }
 
+//binarySearch() 
 int WordList::binarySearch(string target) {
     // same logic
     int first = 0,
@@ -100,10 +116,7 @@ int WordList::binarySearch(string target) {
     return position;
 }
 
-void WordList::getAntonym(int position) {
-    cout << *wordsList[position].getA();
-}
-
+//displayArray() 
 void WordList::displayArray() {
     
     cout << setw(0)  << "==========   ";
@@ -140,12 +153,5 @@ void WordList::displayArray() {
     cout << setw(0)  << "==========   ";
     cout << setw(0)  << "==========   ";
     cout << endl;
-}
-
-//Destructor
-WordList::~WordList() 
-{
-    delete [] wordsList;
-    delete [] stringList;
 }
 

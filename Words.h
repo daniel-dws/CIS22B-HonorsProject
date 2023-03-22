@@ -9,7 +9,7 @@ using std::string;
     Words.h file to declare 
     
     Written by: Ben Hung
-    Debugged by: Daniel Wongs
+    Debugged by: Daniel Wong
 */
 
 class Words {

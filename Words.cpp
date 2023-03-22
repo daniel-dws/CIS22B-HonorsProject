@@ -7,7 +7,7 @@ using namespace std;
 /*
     Implementation file for the Words class.
     
-    Written by: Danny barry
+    Written by: Danny Wong
     Debugged by: Ben Hung
 */
 
