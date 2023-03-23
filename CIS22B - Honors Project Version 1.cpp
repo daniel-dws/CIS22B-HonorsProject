@@ -25,12 +25,14 @@ int binarySearch(Words *wordsList, string target, int noWords);
 
 /*
  This function (main) does the following:
-    Welcomes user and prompts for the word
-    Lower cases all words
-    Asks user to repeat program 
-    Function written by: Ben Hung
-    Debugged by: Daniel Wong
+     - Welcomes user and prompts for the word
+     - Lower cases all words
+     - Asks user to repeat program 
+
+     Function written by: Ben Hung
+     Debugged by: Daniel Wong
 */
+
 int main() {
     
     // Printing introduction.
@@ -112,7 +114,7 @@ int main() {
     return 0;
 }
 
-// Function Declarations.
+// Function Declarations
 
 /*
  This function (readInputFile) does the following:
