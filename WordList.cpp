@@ -84,7 +84,7 @@ void WordList::insertPair(string word, string antonym)
 }
 
 /* 
-This function (binarySearch) does the following:
+This function (insertOne) does the following:
 - Takes in an index of the current line from the readInputFile() loop.
 - Rearranges Word object located from the index alphabetically in the array of word objects.
   
