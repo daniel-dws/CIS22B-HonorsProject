@@ -41,7 +41,10 @@ void WordList::getAntonym(int position) {
     
     cout << *wordsList[position].getA();
     
+    // Tests the surrounding Word objects and see if they are multiples of the original word, then prints the antonym.
     int idx = position-1;
+ 
+    // This while loop tests Word objects going downward from the location of the original antonym.
     while (idx >= 0 && *wordsList[idx].getW() == *wordsList[position].getW()) {
         
         cout << ", " << *wordsList[idx].getA();
@@ -49,6 +52,7 @@ void WordList::getAntonym(int position) {
     }
     
     idx = position +1;
+    // // This while loop tests word objects going upward from the location of the original antonym.
     while (idx < maxLength && *wordsList[idx].getW() == *wordsList[position].getW()) {
         
         cout << ", " << *wordsList[idx].getA();
