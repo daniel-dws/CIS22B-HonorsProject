@@ -62,11 +62,11 @@ void WordList::getAntonym(int position) {
 
 /* 
 This function (insertPair) does the following:
-- Takes in the strings of word and antonym 
-- Puts the strings into the array to be stored
+ - Takes in the strings of word and antonym 
+ - Puts the strings into the array to be stored
 
-  Function written by: Ben Hung
-  Debugged by: Daniel  Wong
+   Function written by: Ben Hung
+   Debugged by: Daniel  Wong
 */
 
 void WordList::insertPair(string word, string antonym)
@@ -89,11 +89,11 @@ void WordList::insertPair(string word, string antonym)
 
 /* 
 This function (insertOne) does the following:
-- Takes in an index of the current line from the readInputFile() loop.
-- Rearranges Word object located from the index alphabetically in the array of word objects.
-  
-  Function written by: Ben Hung
-  Debugged by: Daniel  Wong
+ - Takes in an index of the current line from the readInputFile() loop.
+ - Rearranges Word object located from the index alphabetically in the array of word objects.
+
+   Function written by: Ben Hung
+   Debugged by: Daniel  Wong
 */
 
 void WordList::insertOne(int curr) {
@@ -115,12 +115,12 @@ void WordList::insertOne(int curr) {
 
 /*
 This function (binarySearch) does the following:
-- Takes in just the target
-- Uses the binary search algorithm to efficiently find the string.
-- Returns the position/index of the string if found, if not returns -1.
+ - Takes in just the target
+ - Uses the binary search algorithm to efficiently find the string.
+ - Returns the position/index of the string if found, if not returns -1.
 
-  Function written by: Daniel Wong
-  Debugged by: Ben Hung
+   Function written by: Daniel Wong
+   Debugged by: Ben Hung
 */
 
 int WordList::binarySearch(string target) {
@@ -149,12 +149,12 @@ int WordList::binarySearch(string target) {
 
 /*
  This function displayArray() does the following: 
- - Prints out the title format.
- - Prints out the sorted alphabetical array of the synonym and proceeding antonyms.
- - Prints out the final format.
- 
-   Function written by: Ben Hung
-   Debugged by: Daniel Wong
+  - Prints out the title format.
+  - Prints out the sorted alphabetical array of the synonym and proceeding antonyms.
+  - Prints out the final format.
+
+    Function written by: Ben Hung
+    Debugged by: Daniel Wong
 */
 
 void WordList::displayArray() {
