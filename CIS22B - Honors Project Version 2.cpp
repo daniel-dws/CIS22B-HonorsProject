@@ -97,8 +97,7 @@ int main() {
 
 /*
  This function (readInputFile) does the following:
-    - Takes in the filename of the input file, an integer to set the size of the array, a pointer to a string list, and a pointer to
-        an array of Words objects.
+    - Takes in the filename of the input file, an integer to set the size of the array.
     - Opens the input file (with validation: exit if file not found).
     - Reads from a input file.
     - Dynamically allocates an array of strings.
