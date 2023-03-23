@@ -59,13 +59,11 @@ int main() {
         WordList *wordsList = readInputFile(fileName, noWords);
         
         // Sorting the list using insertion sort.
-        wordsList->insertionSort();
+        // wordsList->insertionSort();
         
         // Searching the dynamically allocated list by calling the binarySearch function.
         int position;
         position = wordsList->binarySearch(inputWord);
-        
-        cout << "Binary Sort works" << endl;
         
         // Printing result of the search.
         if (position == -1) {
@@ -140,6 +138,8 @@ WordList *readInputFile(string fileName, int &noWords) {
         inputFile >> antonym;
         
         obj->insertPair(word, antonym);
+        obj->insertOne(i);
+        obj->insertOne(i+1);
         
         inputFile.ignore();
     }
