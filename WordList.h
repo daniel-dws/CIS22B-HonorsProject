@@ -32,7 +32,7 @@ class WordList {
         //Functions  
         void insertPair(string word, string antonym);
         void getAntonym(int position);
-        void insertionSort();
+        void insertOne(int curr);
         void displayArray();
         int binarySearch(string target);
         

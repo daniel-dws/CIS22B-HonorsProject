@@ -14,7 +14,6 @@ using namespace std;
 //Constructor
 WordList::WordList(int noWords)
 {
-    cout << noWords << endl;
     wordsList = new Words[noWords*2];
     stringList = new string[noWords*2];
     currIdx = 0; // no actual Word classes have been inserted into wordsList
@@ -39,7 +38,22 @@ WordList::~WordList()
 
 //Getters 
 void WordList::getAntonym(int position) {
+    
     cout << *wordsList[position].getA();
+    
+    int idx = position-1;
+    while (idx >= 0 && *wordsList[idx].getW() == *wordsList[position].getW()) {
+        
+        cout << ", " << *wordsList[idx].getA();
+        idx--;
+    }
+    
+    idx = position +1;
+    while (idx < maxLength && *wordsList[idx].getW() == *wordsList[position].getW()) {
+        
+        cout << ", " << *wordsList[idx].getA();
+        idx++;
+    }
 }
 
 //insertPair back into display 
@@ -61,28 +75,21 @@ void WordList::insertPair(string word, string antonym)
     }
 }
 
-//insertionSort()
-void WordList::insertionSort()
-{
-    
-    // same logic, call before search
-    for (int curr = 1; curr < maxLength; curr++) {
-    
-        // Make a copy of the current element
-        Words temp = wordsList[curr]; 
+void WordList::insertOne(int curr) {
 
-        // Shift elements in the sorted part of the list to make room 
-        int walk = curr - 1;
-        //cout << walk << endl;
-        while(walk >= 0 && *temp.getW() < *wordsList[walk].getW()) {
-            wordsList[walk + 1] = wordsList[walk];
-            walk--;
-        }
+    // Make a copy of the current element
+    Words temp = wordsList[curr]; 
 
-        // Put temp back into the list
-        wordsList[walk + 1] = temp;
+    // Shift elements in the sorted part of the list to make room 
+    int walk = curr - 1;
+
+    while(walk >= 0 && *temp.getW() < *wordsList[walk].getW()) {
+        wordsList[walk + 1] = wordsList[walk];
+        walk--;
     }
-    
+
+    // Put temp back into the list
+    wordsList[walk + 1] = temp;
 }
 
 //binarySearch() 
@@ -106,6 +113,7 @@ int WordList::binarySearch(string target) {
             first = middle + 1;
         }
     }
+    
     return position;
 }
 
