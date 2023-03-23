@@ -56,7 +56,15 @@ void WordList::getAntonym(int position) {
     }
 }
 
-//insertPair back into display 
+/* 
+This function (insertPair) does the following:
+- Takes in the strings of word and antonym 
+- Puts the strings into the array to be stored
+
+  Function written by: Ben Hung
+  Debugged by: Daniel  Wong
+*/
+
 void WordList::insertPair(string word, string antonym)
 {
     if (currIdx + 2 <= maxLength) {
@@ -75,6 +83,15 @@ void WordList::insertPair(string word, string antonym)
     }
 }
 
+/* 
+This function (binarySearch) does the following:
+- Takes in an index of the current line from the readInputFile() loop.
+- Rearranges Word object located from the index alphabetically in the array of word objects.
+  
+  Function written by: Ben Hung
+  Debugged by: Daniel  Wong
+*/
+
 void WordList::insertOne(int curr) {
 
     // Make a copy of the current element
@@ -92,7 +109,16 @@ void WordList::insertOne(int curr) {
     wordsList[walk + 1] = temp;
 }
 
-//binarySearch() 
+/*
+This function (binarySearch) does the following:
+- Takes in just the target
+- Uses the binary search algorithm to efficiently find the string.
+- Returns the position/index of the string if found, if not returns -1.
+
+  Function written by: Daniel Wong
+  Debugged by: Ben Hung
+*/
+
 int WordList::binarySearch(string target) {
     // same logic
     int first = 0,
@@ -117,7 +143,16 @@ int WordList::binarySearch(string target) {
     return position;
 }
 
-//displayArray() 
+/*
+ This function displayArray() does the following: 
+ - Prints out the title format.
+ - Prints out the sorted alphabetical array of the synonym and proceeding antonyms.
+ - Prints out the final format.
+ 
+   Function written by: Ben Hung
+   Debugged by: Daniel Wong
+*/
+
 void WordList::displayArray() {
     
     cout << setw(0)  << "==========   ";
