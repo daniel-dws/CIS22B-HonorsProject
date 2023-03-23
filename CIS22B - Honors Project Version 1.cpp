@@ -5,29 +5,21 @@
     Description: A program that match antonyms to common words requested by a user based on a file.
 */
 
+#include "Words.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <iomanip>
 using namespace std;
 
-// Words Structure.
-struct Words {
-    string *w;
-    string *a;
-};
-
 // Function Definitions.
 Words *readInputFile(string fileName, int &noWords, Words *wordsList, string *&stringList);
 void insertionSort(Words *wordsList, int noWords);
+void insertOne(Words *wordsList, int curr);
 void displayArray(Words *wordsList, int noWords, string *stringList);
 int binarySearch(Words *wordsList, string target, int noWords);
 
 /*
- This function (main) does the following:
-    Welcomes user and prompts for the word
-    Lower cases all words
-    Asks user to repeat program 
     Function written by: Ben Hung
     Debugged by: Daniel Wong
 */
@@ -40,11 +32,13 @@ int main() {
     string repeat = "no";
     int count = 0;
     while (repeat == "yes" || count == 0) {
+        
+    
         // Taking in a word from the user.
         string inputWord;
         cout << "Enter a word: ";
         cin >> inputWord;
-        cout << endl;
+        cout << endl; 
         
         // Changing the word to all lowercase characters.
         for (int i = 0; i < inputWord.length(); i++) {
@@ -66,7 +60,7 @@ int main() {
         wordsList = readInputFile(fileName, noWords, wordsList, stringList);
         
         // Sorting the list using insertion sort.
-        insertionSort(wordsList, noWords);
+        // insertionSort(wordsList, noWords);
         
         // Searching the dynamically allocated list by calling the binarySearch function.
         int position;
@@ -77,7 +71,7 @@ int main() {
             cout << "\"" << inputWord << "\"" << " is unable to be found." << endl;
         }
         else {
-            cout << "\"" << inputWord << "\"" << " has been found! Its antonym is " << *wordsList[position].a << "." << endl;
+            cout << "\"" << inputWord << "\"" << " has been found! Its antonym is " << *wordsList[position].getA() << "." << endl;
         }
         
         // Displaying the array if its less than 25 lines.
@@ -141,11 +135,12 @@ Words *readInputFile(string fileName, int &noWords, Words *wordsList, string *&s
         inputFile >> stringList[i];
         inputFile >> stringList[i+1];
         
-        wordsList[i].w = &stringList[i];
-        wordsList[i].a = &stringList[i+1];
+        wordsList[i] = Words(&stringList[i], &stringList[i+1]);
+        wordsList[i+1] = Words(&stringList[i+1], &stringList[i]);
         
-        wordsList[i+1].w = &stringList[i+1];
-        wordsList[i+1].a = &stringList[i];
+        insertOne(wordsList, i);
+        insertOne(wordsList, i+1);
+        
         inputFile.ignore();
     }
     
@@ -172,7 +167,7 @@ void insertionSort(Words *wordsList, int noWords) {
         
         // Shift elements in the sorted part of the list to make room 
         int walk = curr - 1;
-        while(walk >= 0 && *temp.w < *wordsList[walk].w) {
+        while(walk >= 0 && *temp.getW() < *wordsList[walk].getW()) {
             wordsList[walk + 1] = wordsList[walk];
             walk--;
         }
@@ -180,6 +175,23 @@ void insertionSort(Words *wordsList, int noWords) {
         // Put temp back into the list
         wordsList[walk + 1] = temp;
     }
+}
+
+void insertOne(Words *wordsList, int curr) {
+
+    // Make a copy of the current element
+    Words temp = wordsList[curr]; 
+
+    // Shift elements in the sorted part of the list to make room 
+    int walk = curr - 1;
+
+    while(walk >= 0 && *temp.getW() < *wordsList[walk].getW()) {
+        wordsList[walk + 1] = wordsList[walk];
+        walk--;
+    }
+
+    // Put temp back into the list
+    wordsList[walk + 1] = temp;
 }
 
 /*
@@ -213,14 +225,14 @@ void displayArray(Words *wordsList, int noWords, string *stringList) {
         
         // Only printing the word if it is part of the words half (not antonyms).
         for (int j = 0; j < noWords*2; j+=2) {
-            if (stringList[j].compare(*wordsList[i].w) == 0) {
+            if (stringList[j].compare(*wordsList[i].getW()) == 0) {
                 proceed = true;
             }
         }
         
         if (proceed == true) {
-            cout << right << setw(10) << *wordsList[i].w;
-            cout << "   " << *wordsList[i].a;
+            cout << right << setw(10) << *wordsList[i].getW();
+            cout << "   " << *wordsList[i].getA();
             cout << endl;
         }
     }
@@ -251,10 +263,10 @@ int binarySearch(Words *wordsList, string target, int noWords) {
     // Using while loop until we find or are unable to find the movie.
     while (-1 == position && first <= last) {
         middle = (first + last) / 2;
-        if (*wordsList[middle].w == target) {
+        if (*wordsList[middle].getW() == target) {
             position = middle;
         }
-        else if (*wordsList[middle].w > target) {
+        else if (*wordsList[middle].getW() > target) {
             last = middle - 1;
         }
         else {
