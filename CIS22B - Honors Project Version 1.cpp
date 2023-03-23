@@ -81,7 +81,7 @@ int main() {
             // Printing other matches.
             int idx = position-1;
             while (idx >= 0 && *wordsList[idx].w == *wordsList[position].w) {
-                cout << ", " << *wordsList[idx].w;
+                cout << ", " << *wordsList[idx].a;
                 idx--;
             }
             
